@@ -19,7 +19,7 @@ export class CursoPage implements OnInit {
   }
 
   public get Grupos():string[]{
-    return this.datosService.getGrupos(this.curso);
+    return this.datosService.getCursos(this.curso);
   }
   public pasarGrupo(grupo:String){
     let estudio:String = grupo;

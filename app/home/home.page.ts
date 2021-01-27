@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { DatosService } from '../services/datos.service';
+import { CopiaService } from '../services/copia.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,12 @@ import { DatosService } from '../services/datos.service';
 })
 export class HomePage {
 
-  constructor(private route:Router,private datosService:DatosService) {}
+  constructor(private route:Router,private datosService:DatosService,private copiaService:CopiaService) {}
+
+  ngOnInit(): void {
+    this.copia();
+    this.abrir();
+  }
 
   public get estudios():string[] {
     return this.datosService.getEstudios();
@@ -23,5 +29,21 @@ export class HomePage {
       }
     }
     this.route.navigate(["curso"],extras);
+  }
+
+  copia(){
+    this.copiaService.copiarBBDD().then((res) => {
+      console.log(res);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  abrir(){
+    this.datosService.openDB().then((res) => {
+      console.log(res);
+    }).catch((error) => {
+      console.log(error);
+    })
   }
 }

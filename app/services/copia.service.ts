@@ -8,22 +8,22 @@ import { Platform } from "@ionic/angular";
 export class CopiaService {
   constructor(private sqlDbCopy: SqliteDbCopy, private platform: Platform) {}
 
-  async copiarBBDD() {
-    if (await this.platform.ready()) {
-      console.log("copia la plataforma está lista");
-      await this.sqlDbCopy
-        .copy("Horario16e.db", 0)
+  copiarBBDD() {
+    return new Promise((resolve, reject) => {
+      this.platform.ready().then(() => {
+        this.sqlDbCopy
+        .copy("Horario16.db", 0)
         .then(() => {
-          console.log("copia copiada correctamente");
+          resolve("Copia realizada");
         })
         .catch((error) => {
-          console.log("copia fallo al copiar");
           console.log("copia" + JSON.stringify(error));
+          reject("Fallo al copiar la BD");
         });
-      console.log("copia, terminando");
-    } else {
-      console.log("copia plataforma no preparada");
-    }
-    console.log("copia, comenzando");
+        })
+        .catch(() => {
+          reject("Plataforma no preparada");
+        });
+    });
   }
 }
