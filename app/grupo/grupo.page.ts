@@ -19,11 +19,7 @@ export class GrupoPage implements OnInit {
     })
    }
   ngOnInit() {
-    this.datosService.getHoras().then(()=>{
-      for (let index = 0; index < this.datosService.horasList.length; index++) {
-        this.horas.push(this.datosService.horasList[index].nombre);
-      }
-    }).catch();
+    this.horas=this.datosService.getHoras();
   }
 
   public get Horario() {

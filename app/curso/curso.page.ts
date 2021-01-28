@@ -19,11 +19,7 @@ export class CursoPage implements OnInit {
   }
   
   ngOnInit() {
-    this.datosService.getCursos(this.curso).then((res)=>{
-      for (let index = 0; index < this.datosService.cursosList.length; index++) {
-        this.nombresGrupos.push(this.datosService.cursosList[index].nombre);
-      }
-    }).catch();
+    this.nombresGrupos=this.datosService.getCursos(this.curso);
   }
 
   public get Grupos(){
