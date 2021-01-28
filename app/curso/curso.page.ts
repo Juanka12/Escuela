@@ -36,7 +36,6 @@ export class CursoPage implements OnInit {
     let extras:NavigationExtras={
       state:{
         pasarGrupo:estudio,
-        pasarCurso:this.curso,
       }
     }
     this.route.navigate(["grupo"],extras);

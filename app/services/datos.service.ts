@@ -15,11 +15,6 @@ export class DatosService {
   constructor(private platform: Platform, private sqlite: SQLite) {
   }
 
-  getHorario(curso:string,grupo:string):string[][] {
-    let horario=[ ['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'] ];
-    return horario;
-  }
-  
   executeSentence(target:any[],sqlSentence: string, searchParam: any[]) {
     return new Promise((resolve,reject) => {
       let consultable = true;
@@ -56,10 +51,14 @@ export class DatosService {
     this.executeSentence(this.estudios,sql,[]);
     return this.estudios;
   }
+  getHorario(grupo:string):string[][] {
+    let horario=[ ['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'] ];
+    return horario;
+  }
   getHoras() {
+    this.horasList = [];
     const sql = "Select descripcion as nombre from horasSemana";
-    this.executeSentence(this.horasList,sql,[]);
-    return this.horasList;
+    return this.executeSentence(this.horasList,sql,[]);
   }
   getCursos(estudio) {
     this.cursosList = [];

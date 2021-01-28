@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let item of Horario">
-    {{item}}
-  </ion-card>
+  <ion-row *ngFor="let item of this.horas" class="ion-text-center ">
+    <ion-col>{{item}}</ion-col>
+</ion-row>
 </ion-content>
