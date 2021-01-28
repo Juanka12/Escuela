@@ -20,15 +20,12 @@ export class HomePage {
     })
   }
 
-  abrir(){
-    this.datosService.openDB().then((res) => {
+ async  abrir(){
+    await this.datosService.openDB().then((res) => {
       console.log(res);
     }).catch((error) => {
       console.log(error);
     })
-  }
-
-  iniciar(){
     this.datosService.getEstudios();
   }
 }

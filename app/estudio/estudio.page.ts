@@ -12,6 +12,8 @@ export class EstudioPage {
   constructor(private route:Router,private datosService:DatosService) {}
   
   public get estudios():string[] {
+    console.log(this.datosService.estudios[0].nombre);
+    
     return this.datosService.estudios;
   }
 

@@ -52,9 +52,8 @@ export class DatosService {
   }
   
   getEstudios():String[] {
-    const sql = "select nombre from estudios";
+    const sql = "select * from estudios";
     this.executeSentence(this.estudios,sql,[]);
-    console.log(this.estudios);
     return this.estudios;
   }
   getHoras() {
