@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { DatosService } from '../services/datos.service';
 
@@ -7,14 +7,19 @@ import { DatosService } from '../services/datos.service';
   templateUrl: './estudio.page.html',
   styleUrls: ['./estudio.page.scss'],
 })
-export class EstudioPage {
+export class EstudioPage implements OnInit{
+
+  nombres:Array<string> = new Array<string>();
 
   constructor(private route:Router,private datosService:DatosService) {}
-  
+
+  ngOnInit(): void {
+    for (let index = 0; index < this.datosService.estudios.length; index++) {
+      this.nombres.push(this.datosService.estudios[index].nombre);
+    }
+  }
   public get estudios():string[] {
-    console.log(this.datosService.estudios[0].nombre);
-    
-    return this.datosService.estudios;
+    return this.nombres;
   }
 
   public pasarEstudio(curso:String){
