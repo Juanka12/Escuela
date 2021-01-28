@@ -14,8 +14,9 @@ export class EstudioPage implements OnInit{
   constructor(private route:Router,private datosService:DatosService) {}
 
   ngOnInit(): void {
-    for (let index = 0; index < this.datosService.estudios.length; index++) {
-      this.nombres.push(this.datosService.estudios[index].nombre);
+    let temp = this.datosService.getEstudios();
+    for (let index = 0; index < temp.length; index++) {
+      this.nombres.push(temp[index]);
     }
   }
   public get estudios():string[] {

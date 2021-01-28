@@ -46,7 +46,7 @@ export class DatosService {
     });
   }
   
-  getEstudios():String[] {
+  getEstudios():string[] {
     this.estudios = ["ESO","DIV","BAC","PCPI","GM","GS"];
     return this.estudios;
   }
