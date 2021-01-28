@@ -51,7 +51,7 @@ export class DatosService {
     });
   }
   
-  getEstudios() {
+  getEstudios():String[] {
     const sql = "select nombre from estudios";
     this.executeSentence(this.estudios,sql,[]);
     console.log(this.estudios);
