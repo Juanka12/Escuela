@@ -47,8 +47,7 @@ export class DatosService {
   }
   
   getEstudios():String[] {
-    const sql = "select * from estudios";
-    this.executeSentence(this.estudios,sql,[]);
+    this.estudios = ["ESO","DIV","BAC","PCPI","GM","GS"];
     return this.estudios;
   }
   getHorario(grupo:string):string[][] {
@@ -56,14 +55,12 @@ export class DatosService {
     return horario;
   }
   getHoras() {
-    this.horasList = [];
-    const sql = "Select descripcion as nombre from horasSemana";
-    return this.executeSentence(this.horasList,sql,[]);
+    this.horasList = ["8:15","9:10","10:05","11:25","12:15","13:10"];
+    return this.horasList;
   }
   getCursos(estudio) {
-    this.cursosList = [];
-    const sql = "SELECT grupo.idGrupo as id, grupo.nombre FROM grupo INNER JOIN estudios ON grupo.idEstudios = estudios.idEstudios  WHERE estudios.nombre LIKE ?";
-    return this.executeSentence(this.cursosList,sql,[estudio]);
+    this.cursosList = ["1","2","3"];
+    return this.cursosList;
   }
 
   openDB() {
