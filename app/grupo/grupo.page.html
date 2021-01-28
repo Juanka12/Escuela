@@ -10,7 +10,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-row *ngFor="let item of this.horas" class="ion-text-center ">
+  <ion-row *ngFor="let item of this.horas;index as i" class="ion-text-center">
     <ion-col>{{item}}</ion-col>
+    <ion-col *ngFor="let mat of this.Horario[i]">{{mat}}</ion-col>
 </ion-row>
 </ion-content>

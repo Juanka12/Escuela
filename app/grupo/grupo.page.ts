@@ -26,7 +26,7 @@ export class GrupoPage implements OnInit {
     }).catch();
   }
 
-  public get Horario():string[][] {
+  public get Horario() {
     return this.datosService.getHorario(this.grupo);
   }
 }
