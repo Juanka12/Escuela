@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'grupo',
     loadChildren: () => import('./grupo/grupo.module').then( m => m.GrupoPageModule)
   },
+  {
+    path: 'estudio',
+    loadChildren: () => import('./estudio/estudio.module').then( m => m.EstudioPageModule)
+  },
 ];
 
 @NgModule({

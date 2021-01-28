@@ -9,6 +9,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-button (click)="copia()">Copiar</ion-button>
+  <ion-button (click)="abrir()">Abrir</ion-button>
+</ion-content>
+
+<ion-content>
   <ion-card *ngFor="let item of estudios" button (click)="pasarEstudio(item)"routerLink="/curso">
     {{item}}
   </ion-card>

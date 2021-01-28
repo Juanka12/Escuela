@@ -10,15 +10,17 @@ import { CopiaService } from '../services/copia.service';
 })
 export class HomePage {
 
-  constructor(private route:Router,private datosService:DatosService,private copiaService:CopiaService) {}
-
-  ngOnInit(): void {
-    this.copia();
-    this.abrir();
+  constructor(private route:Router,private datosService:DatosService,private copiaService:CopiaService) {
+    this.init();
   }
-
+  
+  async init(){
+    await this.copiaService.copiarBBDD();
+    await this.datosService.openDB();
+    await this.datosService.getEstudios();
+  }
   public get estudios():string[] {
-    return this.datosService.getEstudios();
+    return this.datosService.estudios;
   }
 
   public pasarEstudio(curso:String){

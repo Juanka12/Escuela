@@ -8,8 +8,12 @@ import { Platform } from "@ionic/angular";
 export class DatosService {
   
   private db: SQLiteObject;
-  
-  constructor(private platform: Platform, private sqlite: SQLite) {}
+  public estudios: any[] = [];
+  public horasList: any[] = [];
+  public cursosList: any[] = [];
+
+  constructor(private platform: Platform, private sqlite: SQLite) {
+  }
 
   getHorario(curso:string,grupo:string):string[][] {
     let horario=[ ['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'],['1','2','3','4','5','6'] ];
@@ -36,7 +40,6 @@ export class DatosService {
           for(let i=0;i < data.rows.length;i++){
             let obj=data.rows.item(i);
             target.push(obj);
-            console.log(obj);
           }
           resolve("Sentencia ejecutada");
         })
@@ -48,23 +51,20 @@ export class DatosService {
     });
   }
   
-  getEstudios(): string[] {
-    let estudios: any[] = [];
+  getEstudios() {
     const sql = "select nombre from estudios";
-    this.executeSentence(estudios,sql,[]);
-    return estudios;
+    return this.executeSentence(this.estudios,sql,[]);
+    
   }
   getHoras() {
-    const horasList: any[] = [];
     const sql = "Select descripcion as nombre from horasSemana";
-    this.executeSentence(horasList,sql,[]);
-    return horasList;
+    this.executeSentence(this.horasList,sql,[]);
+    return this.horasList;
   }
   getCursos(estudio) {
-    const cursosList: any[] = [];
     const sql = "SELECT grupo.idGrupo as id, grupo.nombre FROM grupo INNER JOIN estudios ON grupo.idEstudios = estudios.idEstudios  WHERE estudios.nombre LIKE ?";
-    this.executeSentence(cursosList,sql,[estudio]);
-    return cursosList;
+    this.executeSentence(this.cursosList,sql,[estudio]);
+    return this.cursosList;
   }
 
   openDB() {
