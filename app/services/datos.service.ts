@@ -62,9 +62,9 @@ export class DatosService {
     return this.horasList;
   }
   getCursos(estudio) {
+    this.cursosList = [];
     const sql = "SELECT grupo.idGrupo as id, grupo.nombre FROM grupo INNER JOIN estudios ON grupo.idEstudios = estudios.idEstudios  WHERE estudios.nombre LIKE ?";
-    this.executeSentence(this.cursosList,sql,[estudio]);
-    return this.cursosList;
+    return this.executeSentence(this.cursosList,sql,[estudio]);
   }
 
   openDB() {
