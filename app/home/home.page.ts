@@ -10,28 +10,7 @@ import { CopiaService } from '../services/copia.service';
 })
 export class HomePage {
 
-  constructor(private route:Router,private datosService:DatosService,private copiaService:CopiaService) {
-    this.init();
-  }
-  
-  async init(){
-    await this.copiaService.copiarBBDD();
-    await this.datosService.openDB();
-    await this.datosService.getEstudios();
-  }
-  public get estudios():string[] {
-    return this.datosService.estudios;
-  }
-
-  public pasarEstudio(curso:String){
-    let estudio:String = curso;
-    let extras:NavigationExtras={
-      state:{
-        pasarItem:estudio,
-      }
-    }
-    this.route.navigate(["curso"],extras);
-  }
+  constructor(private datosService:DatosService,private copiaService:CopiaService) {}
 
   copia(){
     this.copiaService.copiarBBDD().then((res) => {
@@ -47,5 +26,9 @@ export class HomePage {
     }).catch((error) => {
       console.log(error);
     })
+  }
+
+  iniciar(){
+    this.datosService.getEstudios();
   }
 }

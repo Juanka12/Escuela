@@ -1,9 +1,15 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>estudio</ion-title>
+    <div class="ion-text-center">
+    <ion-title>
+      Cursos
+    </ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let item of estudios" button (click)="pasarEstudio(item)"routerLink="/curso">
+    {{item}}
+  </ion-card>
 </ion-content>

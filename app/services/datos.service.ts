@@ -53,8 +53,9 @@ export class DatosService {
   
   getEstudios() {
     const sql = "select nombre from estudios";
-    return this.executeSentence(this.estudios,sql,[]);
-    
+    this.executeSentence(this.estudios,sql,[]);
+    console.log(this.estudios);
+    return this.estudios;
   }
   getHoras() {
     const sql = "Select descripcion as nombre from horasSemana";

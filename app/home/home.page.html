@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div class="ion-text-center">
     <ion-title>
-      Cursos
+      Home
     </ion-title>
     </div>
   </ion-toolbar>
@@ -11,10 +11,5 @@
 <ion-content>
   <ion-button (click)="copia()">Copiar</ion-button>
   <ion-button (click)="abrir()">Abrir</ion-button>
-</ion-content>
-
-<ion-content>
-  <ion-card *ngFor="let item of estudios" button (click)="pasarEstudio(item)"routerLink="/curso">
-    {{item}}
-  </ion-card>
+  <ion-button (click)="iniciar()"routerLink="/estudio">Iniciar</ion-button>
 </ion-content>
